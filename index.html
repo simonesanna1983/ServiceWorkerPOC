@@ -1,0 +1,96 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>ServiceWorker example</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div id="status" class="online"></div>
+  <!-- <input type="button" value="Push Notification" id="push"/> -->
+  
+  <div class="container">
+    <form>
+      <img src="imgs/img.jpeg" alt="views">
+      <h3>Contact Form</h3>
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" name="firstname" placeholder="Your name..">
+  
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+  
+      <label for="country">Country</label>
+      <select id="country" name="country">
+        <option value="select">Select</option>
+        <option value="italy">Italy</option>
+        <option value="canada">Canada</option>
+        <option value="usa">USA</option>
+      </select>
+  
+      <label for="lcity">City</label>
+      <input type="text" id="lcity" name="city" placeholder="Your city..">
+  
+      <label for="laddress">Address</label>
+      <input type="text" id="laddress" name="address" placeholder="Your address..">
+      <!-- <label for="subject">Subject</label>
+      <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea> -->
+  
+      <input type="button" value="Copy Contact Form" id="copy"/>
+      
+      <br><br>
+  
+      <fieldset>
+        <h3>Shipping Data</h3> 
+  
+        <label for="fname">First Name</label>
+        <input type="text" id="s_fname" name="firstname" placeholder="Name">
+  
+        <label for="lname">Last Name</label>
+        <input type="text" id="s_lname" name="lastname" placeholder="Last name..">
+      
+        <label for="s_country">Country</label>
+        <select id="s_country" name="country">
+          <option value="select">Select</option>
+          <option value="italy">Italy</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+        </select>
+  
+        <label for="s_lcity">City</label>
+        <input type="text" id="s_lcity" name="city" placeholder="City">
+  
+        <label for="s_laddress">Address</label>
+        <input type="text" id="s_laddress" name="address" placeholder="address">    
+  
+        <input type="button" value="Clear" id="clear"/>
+      </fieldset>    
+    </form>
+  </div>
+  
+ 
+
+  <!-- The SW magic -->
+
+  <script>
+  
+  var registration;
+  if ('serviceWorker' in navigator) {       //&& 'PushManager' in window
+    navigator.serviceWorker.register('sw-22-10-2020.js').then(function(reg) {
+      // Registration was successful
+      console.log('ServiceWorker 22-10-2020 registration successful with scope: ', reg.scope);
+      registration = reg;
+    }).catch(function(err) {
+      // registration failed :(
+      console.log('ServiceWorker 22-10-2020 registration failed: ', err);
+    });
+  } else {
+    // console.warn('Push messaging is not supported');
+    console.log("No ServiceWorker for you :(");
+  }
+  </script>
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>
